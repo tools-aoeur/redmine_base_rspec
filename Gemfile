@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gem 'erb_lint', require: false
 gem 'rspec'
 gem 'rspec-core'
-gem 'rspec-rails'
+gem 'rspec-rails', '~> 4.0.1'
 
 # static code checking tools
 gem 'rubocop', '~> 1.6.0'
