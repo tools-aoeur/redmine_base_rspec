@@ -1,20 +1,12 @@
 language: ruby
 
-dist: xenial
+dist: focal
 
 rvm:
-  - 2.4.5
-# - 2.5.3 (only for RM 4.0+)
+  - 2.7.5
 
 env:
-  - REDMINE_VER=3.4.7
-
-# See: http://www.redmine.org/projects/redmine/wiki/redmineinstall
-# if there is need to deactivate a combination
-# matrix:
-#  exclude:
-#  - rvm: 2.4.5
-#    env: REDMINE_VER=3.3.9
+  - REDMINE_VER=4.2.3
 
 services:
   - mysql
