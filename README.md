@@ -36,7 +36,7 @@ the `-I` option to have the correct load path:
 Installation
 ------------
 
-This plugin is compatible with Redmine 2.1.0+.
+This plugin is compatible with Redmine 3.4.0+.
 
 Please apply general instructions for plugins [here](http://www.redmine.org/wiki/redmine/Plugins).
 
@@ -51,12 +51,3 @@ Then execute:
 ```
 
 And finally restart your Redmine instance.
-
-Contributing
-------------
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
