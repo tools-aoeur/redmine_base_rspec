@@ -18,7 +18,10 @@ end
 # load rails/redmine
 require_relative '../../../config/environment'
 
-# test gems
+require File.expand_path("#{::Rails.root}/test/object_helpers", __FILE__)
+include ObjectHelpers
+
+#test gems
 require 'rspec/rails'
 # require 'rspec/autorun'
 require 'rspec/mocks'
@@ -38,7 +41,19 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/test/fixtures"
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
-  config.include AssertSelectRoot, type: :request
+  config.include AssertSelectRoot, :type => :request
+  config.before(:each, type: :system) do
+    options = {}
+    options[:capabilities] = Selenium::WebDriver::Remote::Capabilities.chrome(
+      'goog:chromeOptions' => {
+        'args' => ["headless", "no-sandbox", "disable-gpu"]
+      }
+    )
+    driven_by(
+      :selenium, using: :chrome, screen_size: [1024, 900],
+      options: options
+    )
+  end
 end
 
 def with_settings(options, &_block)
@@ -54,4 +69,44 @@ def with_settings(options, &_block)
   yield
 ensure
   saved_settings&.each { |k, v| Setting[k] = v }
+end
+
+def log_user(login, password)
+  visit '/my/page'
+  expect(current_path).to eq '/login'
+
+  if Redmine::Plugin.installed?(:redmine_scn)
+    click_on("ou s'authentifier par login / mot de passe")
+  end
+
+  within('#login-form form') do
+    fill_in 'username', with: login
+    fill_in 'password', with: password
+    find('input[name=login]').click
+  end
+  expect(current_path).to eq '/my/page'
+end
+
+def assert_mail_body_match(expected, mail, message=nil)
+  if expected.is_a?(String)
+    expect(mail_body(mail)).to include(expected)
+  else
+    assert_match expected, mail_body(mail), message
+  end
+end
+
+def assert_mail_body_no_match(expected, mail, message=nil)
+  if expected.is_a?(String)
+    expect(mail_body(mail)).to_not include expected
+  else
+    assert_no_match expected, mail_body(mail), message
+  end
+end
+
+def mail_body(mail)
+  mail.parts.first.body.encoded
+end
+
+def uploaded_test_file(name, mime)
+  fixture_file_upload("#{::Rails.root}/test/fixtures/files/#{name}", mime, true)
 end
