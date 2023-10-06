@@ -9,7 +9,7 @@ require 'rspec/rails'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
-require File.expand_path("#{::Rails.root}/test/object_helpers", __FILE__)
+require Rails.root.join('test/object_helpers').expand_path(__FILE__)
 include ObjectHelpers
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -29,7 +29,7 @@ include ObjectHelpers
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/test/fixtures"
+  config.fixture_path = Rails.root.join('test/fixtures')
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
