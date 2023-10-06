@@ -5,7 +5,7 @@ gem 'rspec'
 gem 'rspec-core'
 gem 'rspec-rails'
 
-#for test coverage
+# for test coverage
 # gem 'simplecov', '~> 0.9.1', :require => false, :group => :test
 
 # static code checking tools
@@ -14,3 +14,4 @@ gem 'rubocop-performance'
 gem 'rubocop-rails'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
+gem 'rubocop-thread_safety'
