@@ -19,7 +19,7 @@ end
 require_relative '../../../config/environment'
 
 require Rails.root.join('test/object_helpers').expand_path(__FILE__)
-include ObjectHelpers
+include ObjectHelpers # rubocop:disable Style/MixinUsage
 
 # test gems
 require 'rspec/rails'
@@ -56,7 +56,7 @@ RSpec.configure do |config|
   end
 end
 
-def with_settings(options, &_block)
+def with_settings(options, &)
   saved_settings = options.keys.index_with do |k|
     case Setting[k]
     when Symbol, false, true, nil

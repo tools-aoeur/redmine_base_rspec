@@ -10,7 +10,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require Rails.root.join('test/object_helpers').expand_path(__FILE__)
-include ObjectHelpers
+include ObjectHelpers # rubocop:disable Style/MixinUsage
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

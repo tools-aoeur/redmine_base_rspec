@@ -9,7 +9,9 @@ gem 'rspec-rails'
 # gem 'simplecov', '~> 0.9.1', :require => false, :group => :test
 
 # static code checking tools
+gem 'factory_bot_rails'
 gem 'rubocop'
+gem 'rubocop-factory_bot'
 gem 'rubocop-performance'
 gem 'rubocop-rails'
 gem 'rubocop-rake'
