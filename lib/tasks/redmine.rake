@@ -1,3 +1,5 @@
+return if Rails.env.production?
+
 require 'rspec/core/rake_task'
 
 # Clear core's redmine:plugins:test task, else it's used
