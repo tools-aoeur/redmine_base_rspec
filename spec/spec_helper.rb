@@ -20,6 +20,7 @@ require_relative '../../../config/environment'
 
 require Rails.root.join('test/object_helpers').expand_path(__FILE__)
 include ObjectHelpers # rubocop:disable Style/MixinUsage
+include Redmine::QuoteReply::Helper  # rubocop:disable Style/MixinUsage
 
 # test gems
 require 'rspec/rails'
@@ -38,7 +39,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
-  config.fixture_path = Rails.root.join('test/fixtures')
+  config.fixture_paths = [Rails.root.join('test/fixtures')]
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.include AssertSelectRoot, type: :request

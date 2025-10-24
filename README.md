@@ -36,7 +36,7 @@ the `-I` option to have the correct load path:
 Installation
 ------------
 
-This plugin is compatible with Redmine 3.4.0+.
+This plugin is compatible with Redmine 6.1.0+.
 
 Please apply general instructions for plugins [here](http://www.redmine.org/wiki/redmine/Plugins).
 

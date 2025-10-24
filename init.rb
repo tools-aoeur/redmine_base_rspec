@@ -2,7 +2,9 @@ Redmine::Plugin.register :redmine_base_rspec do
   name 'Redmine Base Rspec plugin'
   author 'Jean-Baptiste BARTH (orig)'
   description 'RSpec and RuboCop support'
-  version '4.0.2'
+  version '6.1.0'
   url 'https://github.com/tools-aoeur/redmine_base_rspec'
   author_url 'https://github.com/tools-aoeur'
+
+  requires_redmine version_or_higher: '6.1'
 end
